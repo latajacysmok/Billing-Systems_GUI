@@ -9,11 +9,18 @@ Bill_Sys.geometry("1350x650")
 Bill_Sys.resizable(0, 0)
 Bill_Sys.title("Billing Systems")
 
+def ShowAlert():
+    qExit = messagebox.showinfo("Error", "You have entered incorrect data!")
+
 def Total():
-    CarpetPrice = float(Carpets.get())
-    FabricPrice = float(Fabric.get())
-    BlindsPrice = float(Blinds.get())
-    HomeDeliverPrice = float(HomeDeliver.get())
+    try:
+        CarpetPrice = float(Carpets.get())
+        FabricPrice = float(Fabric.get())
+        BlindsPrice = float(Blinds.get())
+        HomeDeliverPrice = float(HomeDeliver.get())
+    except ValueError:
+        ShowAlert()
+        return
 
     CarpetCost = "pln", str('%.2f'%((CarpetPrice * 27.98)))
     CostofCarpet.set(CarpetCost)
@@ -121,7 +128,7 @@ lblRef = Label(f1aa, font=('arial', 16, 'bold'), text="Sales Reference",
 lblRef.grid(row=0, column=0)
 
 txtRef = Entry(f1aa, font=('arial', 16, 'bold'), textvariable=PaymentRef,
-                 bd=10, insertwidth=2, justify='left')
+                 bd=10, insertwidth=2, justify='left', state="disabled")
 txtRef.grid(row=0, column=1)
 
 lblCarpets = Label(f1aa, font=('arial', 16, 'bold'), text="Carpets",
@@ -171,7 +178,7 @@ lblDateofOrder = Label(f1ab, font=('arial', 16, 'bold'), text="Date of Order",
 lblDateofOrder.grid(row=0, column=0)
 
 txtDateofOrder = Entry(f1ab, font=('arial', 16, 'bold'), textvariable=DateofOrder,
-                 bd=10, insertwidth=2, justify='left')
+                 bd=10, insertwidth=2, justify='left', state="disabled")
 txtDateofOrder.grid(row=0, column=1)
 
 lblCostofCarpets = Label(f1ab, font=('arial', 16, 'bold'), text="Cost of Carpet",
@@ -179,7 +186,7 @@ lblCostofCarpets = Label(f1ab, font=('arial', 16, 'bold'), text="Cost of Carpet"
 lblCostofCarpets.grid(row=1, column=0)
 
 txtCostofCarpet = Entry(f1ab, font=('arial', 16, 'bold'), textvariable=CostofCarpet,
-                 bd=10, insertwidth=2, justify='left')
+                 bd=10, insertwidth=2, justify='left', state="disabled")
 txtCostofCarpet.grid(row=1, column=1)
 
 lblCostofFabric = Label(f1ab, font=('arial', 16, 'bold'), text="Cost of Fabric",
@@ -187,7 +194,7 @@ lblCostofFabric = Label(f1ab, font=('arial', 16, 'bold'), text="Cost of Fabric",
 lblCostofFabric.grid(row=2, column=0)
 
 txtCostofFabric = Entry(f1ab, font=('arial', 16, 'bold'), textvariable=CostofFabric,
-                 bd=10, insertwidth=2, justify='left')
+                 bd=10, insertwidth=2, justify='left', state="disabled")
 txtCostofFabric.grid(row=2, column=1)
 
 lblCostofBlinds = Label(f1ab, font=('arial', 16, 'bold'), text="Cost of Blinds",
@@ -195,7 +202,7 @@ lblCostofBlinds = Label(f1ab, font=('arial', 16, 'bold'), text="Cost of Blinds",
 lblCostofBlinds.grid(row=3, column=0)
 
 txtCostofBlinds = Entry(f1ab, font=('arial', 16, 'bold'), textvariable=CostofBlinds,
-                 bd=10, insertwidth=2, justify='left')
+                 bd=10, insertwidth=2, justify='left', state="disabled")
 txtCostofBlinds.grid(row=3, column=1)
 
 lblCostofHomeDeliver = Label(f1ab, font=('arial', 16, 'bold'), text="Cost of Deliver",
@@ -203,7 +210,7 @@ lblCostofHomeDeliver = Label(f1ab, font=('arial', 16, 'bold'), text="Cost of Del
 lblCostofHomeDeliver.grid(row=4, column=0)
 
 txtCostofHomeDeliver = Entry(f1ab   , font=('arial', 16, 'bold'), textvariable=CostofHomeDeliver,
-                 bd=10, insertwidth=2, justify='left')
+                 bd=10, insertwidth=2, justify='left', state="disabled")
 txtCostofHomeDeliver.grid(row=4, column=1)
 
 #---Order Information f2aa
@@ -218,7 +225,7 @@ lblPaidTax = Label(f2aa, font=('arial', 16, 'bold'), text="Paid Tax",
 lblPaidTax.grid(row=0, column=0)
 
 txtPaidTax = Entry(f2aa, font=('arial', 16, 'bold'), textvariable=PaidTax,
-                 bd=8, insertwidth=2, justify='left')
+                 bd=8, insertwidth=2, justify='left', state="disabled")
 txtPaidTax.grid(row=0, column=1)
 
 lblSubTotal = Label(f2aa, font=('arial', 16, 'bold'), text="Sub Total",
@@ -226,7 +233,7 @@ lblSubTotal = Label(f2aa, font=('arial', 16, 'bold'), text="Sub Total",
 lblSubTotal.grid(row=1, column=0)
 
 txtSubTotal = Entry(f2aa, font=('arial', 16, 'bold'), textvariable=SubTotal,
-                 bd=8, insertwidth=2, justify='left')
+                 bd=8, insertwidth=2, justify='left', state="disabled")
 txtSubTotal.grid(row=1, column=1)
 
 lblTotalCost = Label(f2aa, font=('arial', 16, 'bold'), text="Total Cost",
@@ -234,7 +241,7 @@ lblTotalCost = Label(f2aa, font=('arial', 16, 'bold'), text="Total Cost",
 lblTotalCost.grid(row=2, column=0)
 
 txtTotalCost = Entry(f2aa, font=('arial', 16, 'bold'), textvariable=TotalCost,
-                 bd=8, insertwidth=2, justify='left')
+                 bd=8, insertwidth=2, justify='left', state="disabled")
 txtTotalCost.grid(row=2, column=1)
 
 #---f2ab Buttons
